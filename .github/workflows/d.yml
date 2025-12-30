@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
   release:
-    types: [ published ]
+    types: [published]
 
 jobs:
   sync:
@@ -23,7 +23,7 @@ jobs:
           [r2]
           type = s3
           provider = Cloudflare
-          access_key_id = ${{ secrets.R2_ACCESS_KEY_ID }}
+          access_key_id = dummy
           secret_access_key = ${{ secrets.R2_SECRET_ACCESS_KEY }}
           endpoint = https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com
           EOF
@@ -31,5 +31,4 @@ jobs:
       - name: Sync downloads to R2
         run: |
           rclone sync downloads r2:${{ secrets.R2_BUCKET }}/download \
-            --checksum \
-            --progress
+            --checksum --progress
