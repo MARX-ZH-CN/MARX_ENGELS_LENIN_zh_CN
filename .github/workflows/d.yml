@@ -30,6 +30,6 @@ jobs:
 
       - name: Sync downloads to R2
         run: |
-          rclone sync downloads r2:${{ secrets.R2_BUCKET }}/downloads \
+          rclone sync downloads r2:${{ secrets.R2_BUCKET }}/download \
             --checksum \
             --progress
