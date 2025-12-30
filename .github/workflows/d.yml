@@ -28,7 +28,7 @@ jobs:
           endpoint = https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com
           EOF
 
-      - name: Sync download to R2
+      - name: Sync downloads to R2
         run: |
-          rclone sync download r2:${{ secrets.R2_BUCKET }}/download \
+          rclone sync downloads r2:${{ secrets.R2_BUCKET }}/downloads \
             --checksum --progress
