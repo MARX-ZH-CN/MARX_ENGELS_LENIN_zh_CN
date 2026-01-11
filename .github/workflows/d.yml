@@ -31,5 +31,8 @@ jobs:
 
       - name: Sync downloads to R2
         run: |
-          rclone sync downloads r2:${{ secrets.R2_BUCKET }}/downloads \
+          rclone sync ./ r2:${{ secrets.R2_BUCKET }}/ \
             --checksum --progress
+--progress \
+      --exclude ".git/**" \
+      --exclude ".github/**"
